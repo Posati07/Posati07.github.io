@@ -6,6 +6,36 @@
     <title>Monitoramento Sensor de Incendio</title>
 <link rel="stylesheet" href=" estilo.css"> 
 </head>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBh_5YjSHEbn0oSqNuWeNscqyChSEku3-4",
+    authDomain: "sensor-residencial-9c834.firebaseapp.com",
+    databaseURL: "https://sensor-residencial-9c834-default-rtdb.firebaseio.com/",
+    projectId: "sensor-residencial-9c834",
+    storageBucket: "sensor-residencial-9c834.appspot.com",
+    messagingSenderId: "890798287639",
+    appId: "1:890798287639:web:xxxxxxxxxxxx"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  const tempRef = ref(db, "sensor/temperatura");
+  const umiRef = ref(db, "sensor/umidade");
+
+  onValue(tempRef, (snapshot) => {
+    document.getElementById("temperatura").innerText = snapshot.val() + " °C";
+  });
+
+  onValue(umiRef, (snapshot) => {
+    document.getElementById("umidade").innerText = snapshot.val() + " %";
+  });
+</script>
+
+
 <body>
     <header> 
         <h1> Sensor de Incêndio com Alarme Residencial</h1>
@@ -45,6 +75,7 @@
 </a>
 
 </div>
+
 
 </body>
 
