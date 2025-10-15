@@ -25,6 +25,7 @@
 
   const tempRef = ref(db, "sensor/temperatura");
   const umiRef = ref(db, "sensor/umidade");
+  const gasRef = ref(db, "sensores/gases"); 
 
   onValue(tempRef, (snapshot) => {
     document.getElementById("temperatura").innerText = snapshot.val() + " °C";
