@@ -20,13 +20,13 @@
     appId: "1:890798287639:web:xxxxxxxxxxxx"
   };
 
-  const app = initializeApp(firebaseConfig);
+    const app = initializeApp(firebaseConfig);
   const db = getDatabase(app);
 
   const tempRef = ref(db, "sensor/temperatura");
   const umiRef = ref(db, "sensor/umidade");
-  const gasRef = ref(db, "sensores/gases"); 
-
+  const gasRef = ref(db, "sensor/gases"); 
+  
   onValue(tempRef, (snapshot) => {
     document.getElementById("temperatura").innerText = snapshot.val() + " °C";
   });
@@ -37,7 +37,8 @@
 
   onValue(gasRef, (snapshot) => {
     document.getElementById("gases").innerText = snapshot.val() + " ppm";
-});
+  });
+
 
 </script>
 
