@@ -33,6 +33,11 @@
   onValue(umiRef, (snapshot) => {
     document.getElementById("umidade").innerText = snapshot.val() + " %";
   });
+
+  onValue(gasRef, (snapshot) => {
+    document.getElementById("gases").innerText = snapshot.val() + " ppm";
+});
+
 </script>
 
 
